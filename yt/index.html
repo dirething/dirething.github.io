@@ -109,7 +109,7 @@
             }).then(function (resp) {
                 var p = document.createElement('p');
                 var name = resp;
-                p.appendChild(document.createTextNode('Result: ' + name.body + '!'));
+                p.appendChild(document.createTextNode('Welcome: ' + name.result.items[0].snippet.title + '!'));
                 document.getElementById('content').appendChild(p);
             });
         }
