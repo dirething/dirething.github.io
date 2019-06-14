@@ -115,7 +115,7 @@
                 gapi.client.youtube.channels.list({
                     "part": "snippet,contentDetails,statistics",
                     "managedByMe": true,
-                    "onBehalfOfContentOwner":"UCkaoIIggv_UfYFJg1yrX-Gw"
+                    "onBehalfOfContentOwner": name.result.items[0].id
                 })
                     .then(function (response) {
                         // Handle the results here (response.result has the parsed body).
