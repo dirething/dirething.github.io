@@ -1,4 +1,4 @@
-<!--
+﻿<!--
   Copyright (c) 2011 Google Inc.
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -111,6 +111,16 @@
                 var name = resp;
                 p.appendChild(document.createTextNode('Welcome: ' + name.result.items[0].snippet.title + '!'));
                 document.getElementById('content').appendChild(p);
+
+                gapi.client.youtube.channels.list({
+                    "part": "snippet,contentDetails,statistics",
+                    "managedByMe": true
+                })
+                    .then(function (response) {
+                        // Handle the results here (response.result has the parsed body).
+                        console.log("Response", response);
+                    },
+                        function (err) { console.error("Execute error", err); });
             });
         }
     </script>
