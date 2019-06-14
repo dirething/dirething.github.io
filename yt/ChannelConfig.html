@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>Channel Config Editor</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+
+
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="rawin">JSON</label>
+                <textarea id="rawin" class="pure-input-1-2" placeholder="Paste config JSON here...">
+
+{
+    "name": "Vaping With Ken",
+    "channelID": "UCkaoIIggv_UfYFJg1yrX-Gw",
+    "defaultMsgSet": "ken",
+    "showInfo": {
+      "Item1": 2,
+      "Item2": 19,
+      "Item3": 23,
+      "Item4": "thevapeshow"
+    },
+    "Commands": {
+      "customer": "Customer service intermission sponsored by snohomish vapor co https://www.facebook.com/snohomishvaporco/",
+      "stop": "Ken's channel is neutral & low drama - offending comments will be removed & repeat offenders muted"
+    },
+    "Signoffs": [
+      "Vaping With Ken: http://bit.ly/FueeefArmy https://www.instagram.com/vapingwithken/ https://twitter.com/VapingWithKen https://www.paypal.me/vapingwithken http://patreon.com/vapingwithken"
+    ],
+    "Links": [
+      "Follow Ken on all the things: Vaping With Ken Official Facebook Group - http://bit.ly/FueeefArmy instagram https://www.instagram.com/vapingwithken/ twitter https://twitter.com/VapingWithKen"
+    ],
+    "runGreetings": true,
+    "runStats": true,
+    "DisableAdminCommands": false,
+    "DoIntroText": true,
+    "CheckTiaMoney": true,
+    "MsgPrefix": null
+  }
+
+</textarea>
+            </div>
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary">Next</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="name">Username</label>
+                <input id="name" type="text" placeholder="Username">
+                <span class="pure-form-message-inline">This is a required field.</span>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Password">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" placeholder="Email Address">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="foo">Supercalifragilistic Label</label>
+                <input id="foo" type="text" placeholder="Enter something here...">
+            </div>
+
+            <div class="pure-controls">
+                <label for="cb" class="pure-checkbox">
+                    <input id="cb" type="checkbox"> I've read the terms and conditions
+                </label>
+
+                <button type="submit" class="pure-button pure-button-primary">Next</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

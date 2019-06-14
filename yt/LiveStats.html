@@ -1,0 +1,90 @@
+ken.html
+Earlier this year
+Mar 11
+
+You uploaded an item
+HTML
+ken.html
+<html>
+<head>
+    <title>v1.2 Stream Info</title>
+    <style>
+        body {
+            color: white;
+            background-color: black;
+        }
+
+        .new {
+            color: lightgreen;
+        }
+    </style>
+    <title>Bot Info</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id='info'>
+        <img id='thumb' style='float:right' />
+        <div id='updatetime'></div>
+        <div id='title'></div>
+        <div id='views'></div>
+        <div id='likes'></div>
+        <div id='dislikes'></div>
+        <hr />
+        <ul id='users'></ul>
+    </div>
+
+
+    <script>
+
+        var users = ['dirething'];
+        var lastid = '';
+        var interval = 0;
+
+        function getData() {
+            $.getJSON('https://api.myjson.com/bins/14upes').done(function (data) {
+
+                if ((new Date()) - (new Date(data.updatetime)) > 2100000) {
+                    clearInterval(interval);
+                    alert('Show data is more that 30 minutes old.  Show is over or bot is broken.  Updates disabled, refresh once the bot & the stream are both working.');
+                }
+
+                if (lastid == '') {
+                    lastid = data.vidinfo.id;
+                }
+
+                if (lastid != data.vidinfo.id) {
+                    clearInterval(interval);
+                    interval = 0;
+                    if (window.confirm("New show detected - load new show?")) {
+                        $('#users').empty();
+                        interval = setInterval(getData, 10000);
+                    } else {
+                        $('#users').prepend('<li class="new">[old show data - reload page to update]</li>');
+                    }
+                }
+
+                if (interval != 0) {
+                    $('#thumb').attr("src", data.vidinfo.snippet.thumbnails.medium.url);
+                    $('#updatetime').text((new Date(data.updatetime)).toString());
+                    $('#title').text(data.vidinfo.snippet.title);
+                    $('#views').text('views   : ' + data.vidinfo.statistics.viewCount);
+                    $('#likes').text('likes   : ' + data.vidinfo.statistics.likeCount);
+                    $('#dislikes').text('dislikes: ' + data.vidinfo.statistics.dislikeCount);
+
+                    $.each(data.users, function (key, value) {
+                        if (users.indexOf(key) == -1) {
+                            users.push(key);
+                            $('#users').prepend('<li class="new">' + key + '</li>');
+                        }
+                    });
+
+                    $(".new").on("click", function () { $(this).removeClass('new'); });
+                }
+            });
+        }
+
+        interval = setInterval(getData, 10000);
+        getData();
+    </script>
+</body>
+</html>
