@@ -23,6 +23,7 @@
         <div id='likes'></div>
         <div id='dislikes'></div>
         <hr />
+        <ul id='superchats'></ul>
         <ul id='users'></ul>
     </div>
 
@@ -69,6 +70,12 @@
                             users.push(key);
                             $('#users').prepend('<li class="new">' + key + '</li>');
                         }
+                    });
+
+                    $('#superchats').empty();
+
+                    $.each(data.users, function (key, value) {
+                        $('#superchats').prepend('<li class="new">' + value + '</li>');
                     });
 
                     $(".new").on("click", function () { $(this).removeClass('new'); });
