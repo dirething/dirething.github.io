@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>v1.2 Stream Info</title>
+    <title>v2.1 Stream Info</title>
     <style>
         body {
             color: black;
@@ -46,7 +46,8 @@
         var interval = 0;
 
         function getData() {
-            $.getJSON('https://api.myjson.com/bins/14upes').done(function (data) {
+            //https://api.myjson.com/bins/14upes
+            $.getJSON('http://dirething.asuscomm.com:24242/data.json').done(function (data) {
 
                 if ((new Date()) - (new Date(data.updatetime)) > 2100000) {
                     clearInterval(interval);
